@@ -1,13 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A096FF2B-6DA9-4693-A241-D5B1FA846BA8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{ADEE5DA7-855B-429D-AEDB-A9BE42C01AEC}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RemoteDocumentProvider", "src\RemoteDocumentProvider\RemoteDocumentProvider.csproj", "{1DC0D792-5B94-4DD9-BC17-6917F47D3D60}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "RemoteDocumentProvider", "src\RemoteDocumentProvider\RemoteDocumentProvider.xproj", "{1DC0D792-5B94-4DD9-BC17-6917F47D3D60}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,8 +28,5 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1DC0D792-5B94-4DD9-BC17-6917F47D3D60} = {A096FF2B-6DA9-4693-A241-D5B1FA846BA8}
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {7290DD9C-E971-4796-A28B-9D695969430F}
 	EndGlobalSection
 EndGlobal
