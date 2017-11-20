@@ -18,7 +18,7 @@ namespace RemoteDocumentProvider.Controllers
         // GET api/DSSdocuments/qlkfjdksafjweoi=
         [Route("api/[controller]/{id}")]
         [HttpGet]
-        public string Get(string id)
+        public IActionResult Get(string id)
         {
             return Get(id, string.Empty);
         }
@@ -26,7 +26,7 @@ namespace RemoteDocumentProvider.Controllers
         // GET api/DSSdocuments/qlkfjdksafjweoi=/alkjdqkjweio=
         [Route("api/[controller]/{id}/{parameters}")]
         [HttpGet]        
-        public string Get(string id, string parameters)
+        public IActionResult Get(string id, string parameters)
         {            
             if (string.IsNullOrEmpty(id))
                 throw new ArgumentNullException("id");
@@ -56,22 +56,22 @@ namespace RemoteDocumentProvider.Controllers
             response.SignatureType = SignatureType.Default;
 
 #pragma warning disable CS1701 // Assuming assembly reference matches identity
-            return JsonConvert.SerializeObject(response);
+            return Ok(response);
 #pragma warning restore CS1701 // Assuming assembly reference matches identity
         }
 
         // POST api/DSSDocuments/qlkfjdksafjweoi=
         [Route("api/[controller]/{id}")]
         [HttpPost]        
-        public void Post(string id, [FromBody]DocumentModel value)
+        public IActionResult Post(string id, [FromBody]DocumentModel value)
         {
-            Post(id, string.Empty, value);
+            return Post(id, string.Empty, value);
         }
 
         // POST api/DSSDocuments/qlkfjdksafjweoi=/alkjdqkjweio=
         [Route("api/[controller]/{id}/{parameters}")]
         [HttpPost]
-        public void Post(string id, string parameters, [FromBody]DocumentModel value)
+        public IActionResult Post(string id, string parameters, [FromBody]DocumentModel value)
         {
 #pragma warning disable CS1701 // Assuming assembly reference matches identity
             var documentUrl = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(id));
@@ -81,6 +81,8 @@ namespace RemoteDocumentProvider.Controllers
 
             System.IO.File.WriteAllBytes(@"d:\test\sample.signed.pdf", documentBytes);
 #pragma warning restore CS1701 // Assuming assembly reference matches identity
+
+            return NoContent();
         }
 
     }

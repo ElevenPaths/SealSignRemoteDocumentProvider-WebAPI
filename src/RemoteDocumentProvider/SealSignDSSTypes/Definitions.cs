@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace RemoteDocumentProvider.SealSignDSSTypes
 {
-    class GetSigningDocumentResponse
+    public class GetSigningDocumentResponse
     {
         public SignatureProfile SignatureProfile { get; set; }
         public SignatureType SignatureType { get; set; }

@@ -40,11 +40,11 @@ namespace RemoteDocumentProvider.Controllers
 
         [Route("api/[controller]/parameters/{signatureIndex}/{originalJobId}/{jobTitle}")]
         [HttpPost]
-        public string GetSignatureParameters(int signatureIndex, int originalJobId, string jobTitle, [FromBody] GetSignatureParameterModel bodyData)
+        public IActionResult GetSignatureParameters(int signatureIndex, int originalJobId, string jobTitle, [FromBody] GetSignatureParameterModel bodyData)
         {            
             var jobTitleDecoded = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(jobTitle));
 
-            string response = JsonConvert.SerializeObject(new GetSignatureParametersResponse()
+            return Ok(new GetSignatureParametersResponse()
             {
                 SignatureProfile = SignatureProfile.PDF,
                 BiometricSignatureType = BiometricSignatureType.Default,
@@ -53,9 +53,7 @@ namespace RemoteDocumentProvider.Controllers
                 Options = SignatureFlags.Default,
                 Parameters = null,
                 DetachedSignature = null
-            });
-
-            return response;
+            });           
         }
 
         private class GetSignatureParametersResponse
